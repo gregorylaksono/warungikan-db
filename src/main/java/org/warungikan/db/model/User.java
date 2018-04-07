@@ -58,7 +58,7 @@ public class User extends Basic implements Serializable{
 	@Column(name="longitude",  nullable=false)
 	private Double longitude;
 	
-	@Column(name="type")
+	@Column(name="type", nullable=false)
 	private Short type;
 	
 	public String getName() {
@@ -89,6 +89,57 @@ public class User extends Basic implements Serializable{
 		this.id = id;
 		return this;
 	}
+	public String getTelpNo() {
+		return telpNo;
+	}
+	public User setTelpNo(String telpNo) {
+		this.telpNo = telpNo;
+		return this;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public User setAddress(String address) {
+		this.address = address;
+		return this;
+	}
+	public String getCity() {
+		return city;
+	}
+	public User setCity(String city) {
+		this.city = city;
+		return this;
+	}
+	public String getAddressInfo() {
+		return addressInfo;
+	}
+	public User setAddressInfo(String addressInfo) {
+		this.addressInfo = addressInfo;
+		return this;
+	}
+	public Double getLatitude() {
+		return latitude;
+	}
+	public User setLatitude(Double latitude) {
+		this.latitude = latitude;
+		return this;
+	}
+	public Double getLongitude() {
+		return longitude;
+	}
+	public User setLongitude(Double longitude) {
+		this.longitude = longitude;
+		return this;
+	}
+	public Short getType() {
+		return type;
+	}
+	public User setType(Short type) {
+		this.type = type;
+		return this;
+	}
+	
+	
 	
 	
 
