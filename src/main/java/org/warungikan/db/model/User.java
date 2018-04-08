@@ -58,8 +58,12 @@ public class User extends Basic implements Serializable{
 	@Column(name="longitude",  nullable=false)
 	private Double longitude;
 	
+	
 	@Column(name="type", nullable=false)
 	private Short type;
+	
+	@Column(name="balance",  nullable=false)
+	private Long balance;
 	
 	public String getName() {
 		return name;
@@ -136,6 +140,13 @@ public class User extends Basic implements Serializable{
 	}
 	public User setType(Short type) {
 		this.type = type;
+		return this;
+	}
+	public Long getBalance() {
+		return balance;
+	}
+	public User setBalance(Long balance) {
+		this.balance = balance;
 		return this;
 	}
 	
