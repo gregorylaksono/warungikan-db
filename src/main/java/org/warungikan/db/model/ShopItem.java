@@ -21,16 +21,16 @@ public class ShopItem extends Basic implements Serializable{
 	@Column(name = "oid", columnDefinition = "serial")
 	private Long id;
 	
-	@Column(name = "name", length=15)
+	@Column(name = "name", length=15, nullable=false)
 	private String name;
 	
 	@Column(name = "description", length=200)
 	private String description;
 	
-	@Column(name = "url", length=50)
+	@Column(name = "url", length=50, nullable=false)
 	private String url;
 	
-	@Column(name = "price")
+	@Column(name = "price", nullable=false)
 	private Long price;
 
 	public Long getId() {
@@ -71,6 +71,11 @@ public class ShopItem extends Basic implements Serializable{
 
 	public void setPrice(Long price) {
 		this.price = price;
+	}
+
+	@Override
+	public String toString() {
+		return name;
 	}
 	
 	

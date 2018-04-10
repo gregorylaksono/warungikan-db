@@ -30,9 +30,6 @@ public class TransactionDetail extends Basic implements Serializable{
     @JoinColumn(name = "item")
 	private ShopItem item;
 	
-	@Column(name = "price")
-	private Long price;
-	
 	@Column(name = "amount")
 	private Integer amount;
 	
@@ -54,14 +51,6 @@ public class TransactionDetail extends Basic implements Serializable{
 
 	public void setItem(ShopItem item) {
 		this.item = item;
-	}
-
-	public Long getPrice() {
-		return price;
-	}
-
-	public void setPrice(Long price) {
-		this.price = price;
 	}
 
 	public Integer getAmount() {

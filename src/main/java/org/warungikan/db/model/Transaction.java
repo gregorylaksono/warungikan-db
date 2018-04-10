@@ -2,7 +2,10 @@ package org.warungikan.db.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -15,6 +18,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 @Entity
 @Table(name="transaction")
 public class Transaction extends Basic implements Serializable{
@@ -41,6 +46,12 @@ public class Transaction extends Basic implements Serializable{
 	@Column(name="total_price", nullable=false)
 	private Long totalPrice;
 	
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="transaction")
+    public Set<TransactionDetail> transactionDetails; 
+	
+	@Temporal(TemporalType.TIMESTAMP)
+    @Column(name="settlement_date", nullable=true)
+	public Date settlementDate;
 	
 	public Long getOid() {
 		return oid;
@@ -64,6 +75,37 @@ public class Transaction extends Basic implements Serializable{
 
 	public void setAgent(User agent) {
 		this.agent = agent;
+	}
+
+	public Long getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(Long totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+
+	public Set<TransactionDetail> getTransactionDetails() {
+		return transactionDetails;
+	}
+
+	public void setTransactionDetails(Set<TransactionDetail> transactionDetails) {
+		this.transactionDetails = transactionDetails;
+	}
+	
+	public void addTransactionDetail(TransactionDetail d) {
+		if(transactionDetails == null) transactionDetails =new HashSet<TransactionDetail>();
+		if(d != null) {
+			transactionDetails.add(d);			
+		}
+	}
+
+	public Date getSettlementDate() {
+		return settlementDate;
+	}
+
+	public void setSettlementDate(Date settlementDate) {
+		this.settlementDate = settlementDate;
 	}
 
 
