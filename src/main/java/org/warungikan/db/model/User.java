@@ -43,13 +43,13 @@ public class User extends Basic implements Serializable{
 	@Column(name="telp_no", length=20, nullable=false)
 	private String telpNo;
 	
-	@Column(name="address", length=20, nullable=false)
+	@Column(name="address", length=50, nullable=false)
 	private String address;
 	
 	@Column(name="city", length=20, nullable=false)
 	private String city;
 	
-	@Column(name="address_info", length=20, nullable=true)
+	@Column(name="address_info", length=50, nullable=true)
 	private String addressInfo;
 	
 	@Column(name="latitude",  nullable=false)

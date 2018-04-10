@@ -21,7 +21,7 @@ import org.warungikan.db.repository.UserRepository;
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = {"org.warungikan.db.repository","org.warungikan.db.model"})
 @ComponentScan(basePackages = { "org.warungikan.db.*" })
-@EntityScan("org.warungikan.db.model")  
+@EntityScan("org.warungikan.db.model")
 public  class SpringConfig {
 
 }

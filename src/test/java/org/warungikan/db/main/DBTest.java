@@ -18,17 +18,21 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 import org.warungikan.db.model.ShopItem;
 import org.warungikan.db.model.ShopItemStock;
+import org.warungikan.db.model.TopupWalletHistory;
 import org.warungikan.db.model.Transaction;
 import org.warungikan.db.model.TransactionDetail;
 import org.warungikan.db.model.User;
 import org.warungikan.db.repository.ShopItemRepository;
 import org.warungikan.db.repository.ShopItemStockRepository;
+import org.warungikan.db.repository.TopupWalletRepository;
+import org.warungikan.db.repository.TransactionDetailRepository;
 import org.warungikan.db.repository.TransactionRepository;
 import org.warungikan.db.repository.UserRepository;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureTestDatabase(replace=Replace.NONE)
 @Transactional
+
 public class DBTest {
 
 	
@@ -43,6 +47,12 @@ public class DBTest {
 	
 	@Autowired
 	TransactionRepository transactionRepository;
+	
+	@Autowired
+	TransactionDetailRepository transactionDetailRepository;
+	
+	@Autowired
+	TopupWalletRepository walletRepository;
 	
 	private User cus;
 	private User agent;
@@ -59,12 +69,15 @@ public class DBTest {
 		test_generate_stocks();
 		
 		test_transaction();
-		update_stock_item();
+		testTopupWallet();
 	}
 	
-	private void update_stock_item() {
-		
-		
+	private void testTopupWallet() {
+		TopupWalletHistory topup = new TopupWalletHistory();
+		topup.setAmount(new Long(400000));
+		topup.setUser(cus);
+		topup.setCreationDate(new Date());
+		walletRepository.save(topup);
 	}
 
 	private void test_transaction() {
@@ -99,7 +112,7 @@ public class DBTest {
 		
 		Assert.assertTrue(t.getOid() != null && t.getOid() > 0);
 		
-		List<TransactionDetail> trxDetailList = transactionRepository.findTransactionDetailByTransactionId(t);
+		List<TransactionDetail> trxDetailList = transactionDetailRepository.findTransactionDetailByTransactionId(t);
 		trxDetailList.stream().forEach( detail -> {
 			Assert.assertTrue(detail.getOid() != null);
 		});
@@ -126,9 +139,13 @@ public class DBTest {
 		t.setCustomer(cus);
 		t.setCreationDate(new Date());
 		Long totalAll = new Long(0);
+		t.setTotalPrice(totalAll);
+		
+		transactionRepository.save(t);
 		for(TransactionDetail d : set) {
 			d.setTransaction(t);
 			totalAll = totalAll.longValue() + (d.getAmount() * d.getItem().getPrice());
+			transactionDetailRepository.save(d);
 		}
 		t.setTotalPrice(totalAll);
 		t = transactionRepository.save(t);
