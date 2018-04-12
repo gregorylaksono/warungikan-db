@@ -69,10 +69,10 @@ public class DBTest {
 		test_generate_stocks();
 		
 		test_transaction();
-		testTopupWallet();
+		test_topup_wallet();
 	}
 	
-	private void testTopupWallet() {
+	private void test_topup_wallet() {
 		TopupWalletHistory topup = new TopupWalletHistory();
 		topup.setAmount(new Long(400000));
 		topup.setUser(cus);
