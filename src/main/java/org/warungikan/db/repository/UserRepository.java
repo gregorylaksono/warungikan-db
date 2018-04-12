@@ -22,4 +22,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	
 	@Query("SELECT c FROM User c WHERE c.type = 2 AND c.id= :oid")
 	public User findAgentById(@Param("oid") Long id);
+	
+	@Query("SELECT c FROM User c WHERE c.userid = :userid")
+	public User findUserByUserId(@Param("userid") String userId);
 }

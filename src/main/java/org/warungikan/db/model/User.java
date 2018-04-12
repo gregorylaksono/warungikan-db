@@ -34,6 +34,9 @@ public class User extends Basic implements Serializable{
 	@Column(name="name", length=30,nullable=false)
 	private String name;
 	
+	@Column(name="user_id", length=30,nullable=false)
+	private String userid;
+	
 	@Column(name="email", length=50, nullable=false)
 	private String email;
 	
@@ -147,6 +150,13 @@ public class User extends Basic implements Serializable{
 	}
 	public User setBalance(Long balance) {
 		this.balance = balance;
+		return this;
+	}
+	public String getUserid() {
+		return userid;
+	}
+	public User setUserid(String userid) {
+		this.userid = userid;
 		return this;
 	}
 	
