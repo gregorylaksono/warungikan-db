@@ -30,6 +30,9 @@ public class TopupWalletHistory extends Basic implements Serializable{
 	
 	@Column(name="amount", nullable=false)
 	private Long amount;
+	
+	@Column(name="amount", nullable=true, length=30)
+	private String description;
 
 	public Long getOid() {
 		return oid;
