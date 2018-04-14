@@ -17,7 +17,10 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.web.JsonPath;
 import org.warungikan.db.view.View;
 
@@ -32,7 +35,7 @@ public class User extends Basic implements Serializable{
 	 */
 	private static final long serialVersionUID = -9085505335831736613L;
 
-	@JsonIgnore
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "oid", columnDefinition = "serial")
@@ -69,6 +72,10 @@ public class User extends Basic implements Serializable{
 	@Column(name="longitude",  nullable=false)
 	private Double longitude;
 	
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name="last_login")
+    private Date lastLogin;
+	
 	@ManyToMany
     @JoinTable( 
         name = "users_roles", 
@@ -78,6 +85,7 @@ public class User extends Basic implements Serializable{
           name = "role_id", referencedColumnName = "oid")) 
     private Collection<Role> roles;
 	
+	@JsonIgnore
 	@Column(name="balance",  nullable=false)
 	private Long balance;
 	
@@ -180,6 +188,17 @@ public class User extends Basic implements Serializable{
 	}
 	public User setEnable(Boolean enable) {
 		this.enable = enable;
+		return this;
+	}
+	public Date getLastLogin() {
+		return lastLogin;
+	}
+	public User setLastLogin(Date lastLogin) {
+		this.lastLogin = lastLogin;
+		return this;
+	}
+	public User setRoles(Collection<Role> roles) {
+		this.roles = roles;
 		return this;
 	}
 

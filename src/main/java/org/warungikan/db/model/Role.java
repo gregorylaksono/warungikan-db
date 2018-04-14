@@ -26,15 +26,7 @@ public class Role {
     
     @ManyToMany(mappedBy = "roles")
     private Collection<User> users;
- 
-    @ManyToMany
-    @JoinTable(
-        name = "roles_privileges", 
-        joinColumns = @JoinColumn(
-          name = "role_id", referencedColumnName = "oid"), 
-        inverseJoinColumns = @JoinColumn(
-          name = "privilege_id", referencedColumnName = "oid"))
-    private Collection<Privilege> privileges;
+
 
     public Role(){}
     public Role(String name){
@@ -64,13 +56,6 @@ public class Role {
 		this.users = users;
 	}
 
-	public Collection<Privilege> getPrivileges() {
-		return privileges;
-	}
-
-	public void setPrivileges(Collection<Privilege> privileges) {
-		this.privileges = privileges;
-	}
 	@Override
 	public String toString() {
 		return getName();
