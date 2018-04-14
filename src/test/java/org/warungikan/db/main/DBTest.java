@@ -221,7 +221,7 @@ public class DBTest {
 		u.setEmail("customer1@email.com").setAddress("addressxxxxxxxxx").setUserid("xxxxuser1")
 		.setAddressInfo("xxxxAddressInfo").setCity("xxxxCity").setLatitude(12345.922221d)
 		.setLongitude(98765.3333221).setName("customer1").setPassword("123asdasdsadpwdasdsadasdsadsadas12345678998765432112345d")
-		.setTelpNo("123456789120").setType(new Short("1")).setBalance(1000000l)
+		.setTelpNo("123456789120").setBalance(1000000l)
 		.setCreationDate(new Date());
 		
 		return u;
@@ -232,7 +232,7 @@ public class DBTest {
 		u.setEmail("agent1@email.com").setAddress("addressxxxxxxxxx").setUserid("xxxxuser2")
 		.setAddressInfo("xxxxAddressInfo").setCity("xxxxCity").setLatitude(1.922222221d)
 		.setLongitude(96665.3333221).setName("agent1").setPassword("123asdasdsadpwdasdsadasdsadsadas12345678998765432112345d")
-		.setTelpNo("123456789120").setType(new Short("2")).setBalance(1000000l)
+		.setTelpNo("123456789120").setBalance(1000000l)
 		.setCreationDate(new Date());
 		
 		return u;

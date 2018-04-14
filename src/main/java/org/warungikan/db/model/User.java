@@ -1,7 +1,9 @@
 package org.warungikan.db.model;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,11 +13,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.data.web.JsonPath;
 import org.warungikan.db.view.View;
+
+import net.minidev.json.annotate.JsonIgnore;
 
 
 @Entity
@@ -26,6 +32,7 @@ public class User extends Basic implements Serializable{
 	 */
 	private static final long serialVersionUID = -9085505335831736613L;
 
+	@JsonIgnore
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "oid", columnDefinition = "serial")
@@ -40,6 +47,7 @@ public class User extends Basic implements Serializable{
 	@Column(name="email", length=50, nullable=false)
 	private String email;
 	
+	@JsonIgnore
 	@Column(name="password", length=70, nullable=false)
 	private String password;
 	
@@ -61,12 +69,20 @@ public class User extends Basic implements Serializable{
 	@Column(name="longitude",  nullable=false)
 	private Double longitude;
 	
-	
-	@Column(name="type", nullable=false)
-	private Short type;
+	@ManyToMany
+    @JoinTable( 
+        name = "users_roles", 
+        joinColumns = @JoinColumn(
+          name = "user_id", referencedColumnName = "oid"), 
+        inverseJoinColumns = @JoinColumn(
+          name = "role_id", referencedColumnName = "oid")) 
+    private Collection<Role> roles;
 	
 	@Column(name="balance",  nullable=false)
 	private Long balance;
+	
+	@Column(name="enable", nullable=false)
+	private Boolean enable;
 	
 	public String getName() {
 		return name;
@@ -138,13 +154,6 @@ public class User extends Basic implements Serializable{
 		this.longitude = longitude;
 		return this;
 	}
-	public Short getType() {
-		return type;
-	}
-	public User setType(Short type) {
-		this.type = type;
-		return this;
-	}
 	public Long getBalance() {
 		return balance;
 	}
@@ -159,6 +168,22 @@ public class User extends Basic implements Serializable{
 		this.userid = userid;
 		return this;
 	}
+	public Collection<Role> getRoles() {
+		return roles;
+	}
+	public User setRoles(List<Role> roles) {
+		this.roles = roles;
+		return this;
+	}
+	public Boolean getEnable() {
+		return enable;
+	}
+	public User setEnable(Boolean enable) {
+		this.enable = enable;
+		return this;
+	}
+
+	
 	
 	
 	
