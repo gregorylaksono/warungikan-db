@@ -1,30 +1,25 @@
 package org.warungikan.db.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.web.JsonPath;
-import org.warungikan.db.view.View;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import net.minidev.json.annotate.JsonIgnore;
 
 
 @Entity
@@ -44,13 +39,10 @@ public class User extends Basic implements Serializable{
 	@Column(name="name", length=30,nullable=false)
 	private String name;
 	
-	@Column(name="user_id", length=30,nullable=false)
-	private String userid;
-	
+
 	@Column(name="email", length=50, nullable=false)
 	private String email;
 	
-	@JsonIgnore
 	@Column(name="password", length=70, nullable=false)
 	private String password;
 	
@@ -85,7 +77,6 @@ public class User extends Basic implements Serializable{
           name = "role_id", referencedColumnName = "oid")) 
     private Collection<Role> roles;
 	
-	@JsonIgnore
 	@Column(name="balance",  nullable=false)
 	private Long balance;
 	
@@ -169,19 +160,9 @@ public class User extends Basic implements Serializable{
 		this.balance = balance;
 		return this;
 	}
-	public String getUserid() {
-		return userid;
-	}
-	public User setUserid(String userid) {
-		this.userid = userid;
-		return this;
-	}
+
 	public Collection<Role> getRoles() {
 		return roles;
-	}
-	public User setRoles(List<Role> roles) {
-		this.roles = roles;
-		return this;
 	}
 	public Boolean getEnable() {
 		return enable;
@@ -202,9 +183,21 @@ public class User extends Basic implements Serializable{
 		return this;
 	}
 
+	public void addRole(Role r){
+		if(getRoles() == null){
+			roles = new ArrayList<>();
+			roles.add(r);
+		}
+	}
 	
-	
-	
+	public static User UserFactory(String name, String email, String telNo, String address, String city, String latitude,
+			String longitude , String password){
+		User t = new User();
+		t.setName(name).setEmail(email).setTelpNo(telNo).setAddress(address).
+		setCity(city).setLatitude(Double.parseDouble(latitude)).
+		setLongitude(Double.parseDouble(longitude)).setPassword(password);
+		return t;
+	}
 	
 	
 
