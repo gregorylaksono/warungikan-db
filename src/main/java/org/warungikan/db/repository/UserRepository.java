@@ -12,18 +12,18 @@ import org.warungikan.db.model.User;
 @Transactional
 public interface UserRepository extends JpaRepository<User, Long> {
 	
-	@Query("SELECT c FROM User c JOIN c.roles r WHERE r.name = 'ROLE_USER' ")
+	@Query("SELECT c FROM User c JOIN c.roles r WHERE r.name = 'ROLE_USER' AND c.enable = true")
 	public List<User> findAllCustomer();
 	
-	@Query("SELECT c FROM User c JOIN c.roles r WHERE r.name = 'ROLE_ADMIN' ")
+	@Query("SELECT c FROM User c JOIN c.roles r WHERE r.name = 'ROLE_ADMIN' AND c.enable = true ")
 	public List<User> findAllAgent();
 	
-	@Query("SELECT c FROM User c WHERE c.id= :oid")
+	@Query("SELECT c FROM User c WHERE c.id= :oid AND c.enable = true")
 	public User findCustomerById(@Param("oid") Long id);
 	
-	@Query("SELECT c FROM User c WHERE c.id= :oid")
+	@Query("SELECT c FROM User c WHERE c.id= :oid AND c.enable = true")
 	public User findAgentById(@Param("oid") Long id);
 	
-	@Query("SELECT c FROM User c WHERE c.email = :email")
+	@Query("SELECT c FROM User c WHERE c.email = :email AND c.enable = true")
 	public User findUserByUserId(@Param("email") String email);
 }

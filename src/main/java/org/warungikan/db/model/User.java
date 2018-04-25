@@ -39,7 +39,6 @@ public class User extends Basic implements Serializable{
 	@Column(name="name", length=30,nullable=false)
 	private String name;
 	
-
 	@Column(name="email", length=50, nullable=false)
 	private String email;
 	
