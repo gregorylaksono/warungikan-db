@@ -59,6 +59,20 @@ public class Role {
 	public String toString() {
 		return getName();
 	}
+	@Override
+	public boolean equals(Object obj) {
+		if(obj instanceof Role){
+			Role r = (Role) obj;
+			if(r.getName().equals(this.getName())){
+				return true;
+			}
+			else{
+				return false;
+			}
+		}else{
+			return super.equals(obj);
+		}
+	}
 	
 	
     
