@@ -39,7 +39,7 @@ public class User extends Basic implements Serializable{
 	@Column(name="name", length=30,nullable=false)
 	private String name;
 	
-	@Column(name="email", length=50, nullable=false)
+	@Column(name="email", length=50, nullable=false, unique=true)
 	private String email;
 	
 	@Column(name="password", length=70, nullable=false)
@@ -189,6 +189,14 @@ public class User extends Basic implements Serializable{
 		}
 	}
 	
+	@Override
+	public boolean equals(Object obj) {
+		if(obj instanceof User){
+			User u = (User) obj;
+			return u.getEmail().equals(this.getEmail());
+		}
+		return false;
+	}
 	public static User UserFactory(String name, String email, String telNo, String address, String city, String latitude,
 			String longitude , String password){
 		User t = new User();
