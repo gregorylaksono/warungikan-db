@@ -27,7 +27,8 @@ public class TransactionState extends Basic implements Serializable{
 		PAID(new Short("2")),
 		PROCESSING(new Short("3")),
 		DELIVERING(new Short("4")),
-		RECEIVED(new Short("5"));
+		RECEIVED(new Short("5")),
+		CANCELED(new Short("6"));
 
 		private Short state;
 		TransactionStateEnum(Short state){

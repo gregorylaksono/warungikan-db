@@ -51,12 +51,16 @@ public class Transaction extends Basic implements Serializable{
 	@Column(name="total_price", nullable=false)
 	private Long totalPrice;
 	
+	@Column(name="transport_price", nullable=false)
+	public Long transportPrice;
+	
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="transaction")
     public Set<TransactionDetail> transactionDetails; 
 	
 	@Temporal(TemporalType.TIMESTAMP)
     @Column(name="settlement_date", nullable=true)
 	public Date settlementDate;
+	
 	
 	public Long getOid() {
 		return oid;
@@ -111,6 +115,14 @@ public class Transaction extends Basic implements Serializable{
 
 	public void setSettlementDate(Date settlementDate) {
 		this.settlementDate = settlementDate;
+	}
+
+	public Long getTransportPrice() {
+		return transportPrice;
+	}
+
+	public void setTransportPrice(Long transportPrice) {
+		this.transportPrice = transportPrice;
 	}
 
 
