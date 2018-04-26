@@ -48,7 +48,7 @@ public class Transaction extends Basic implements Serializable{
 	@JoinColumn(name = "agent")
 	private User agent;
 
-	@Column(name="total_price", nullable=false)
+	@Column(name="total_price")
 	private Long totalPrice;
 	
 	@Column(name="transport_price", nullable=false)
@@ -59,70 +59,79 @@ public class Transaction extends Basic implements Serializable{
 	
 	@Temporal(TemporalType.TIMESTAMP)
     @Column(name="settlement_date", nullable=true)
-	public Date settlementDate;
+	private Date settlementDate;
 	
 	
 	public Long getOid() {
 		return oid;
 	}
 
-	public void setOid(Long oid) {
+	public Transaction setOid(Long oid) {
 		this.oid = oid;
+		return this;
 	}
 
 	public User getCustomer() {
 		return customer;
 	}
 
-	public void setCustomer(User customer) {
+	public Transaction setCustomer(User customer) {
 		this.customer = customer;
+		return this;
 	}
 
 	public User getAgent() {
 		return agent;
 	}
 
-	public void setAgent(User agent) {
+	public Transaction setAgent(User agent) {
 		this.agent = agent;
+		return this;
 	}
 
 	public Long getTotalPrice() {
 		return totalPrice;
 	}
 
-	public void setTotalPrice(Long totalPrice) {
+	public Transaction setTotalPrice(Long totalPrice) {
 		this.totalPrice = totalPrice;
+		return this;
 	}
 
 	public Set<TransactionDetail> getTransactionDetails() {
 		return transactionDetails;
 	}
 
-	public void setTransactionDetails(Set<TransactionDetail> transactionDetails) {
+	public Transaction setTransactionDetails(Set<TransactionDetail> transactionDetails) {
 		this.transactionDetails = transactionDetails;
+		return this;
 	}
 	
-	public void addTransactionDetail(TransactionDetail d) {
+	public Transaction addTransactionDetail(TransactionDetail d) {
 		if(transactionDetails == null) transactionDetails =new HashSet<TransactionDetail>();
 		if(d != null) {
 			transactionDetails.add(d);			
 		}
+
+		return this;
 	}
 
 	public Date getSettlementDate() {
 		return settlementDate;
 	}
 
-	public void setSettlementDate(Date settlementDate) {
+	public Transaction setSettlementDate(Date settlementDate) {
 		this.settlementDate = settlementDate;
+		return this;
 	}
 
 	public Long getTransportPrice() {
 		return transportPrice;
 	}
 
-	public void setTransportPrice(Long transportPrice) {
+	public Transaction setTransportPrice(Long transportPrice) {
 		this.transportPrice = transportPrice;
+		return this;
 	}
 
 

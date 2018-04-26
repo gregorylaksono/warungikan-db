@@ -182,11 +182,12 @@ public class User extends Basic implements Serializable{
 		return this;
 	}
 
-	public void addRole(Role r){
+	public User addRole(Role r){
 		if(getRoles() == null){
 			roles = new ArrayList<>();
 			roles.add(r);
 		}
+		return this;
 	}
 	
 	@Override
