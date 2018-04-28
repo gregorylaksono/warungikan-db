@@ -25,6 +25,7 @@ import org.warungikan.db.model.User;
 import org.warungikan.db.repository.ShopItemRepository;
 import org.warungikan.db.repository.ShopItemStockRepository;
 import org.warungikan.db.repository.TopupWalletRepository;
+import org.warungikan.db.repository.TransactionDetailRepository;
 import org.warungikan.db.repository.TransactionStateRepository;
 import org.warungikan.db.repository.TransactionRepository;
 import org.warungikan.db.repository.UserRepository;
@@ -53,6 +54,9 @@ public class DBTest {
 	
 	@Autowired
 	TopupWalletRepository walletRepository;
+	
+	@Autowired
+	TransactionDetailRepository trxDetailRepository;
 	
 	private User cus;
 	private User agent;
@@ -145,7 +149,7 @@ public class DBTest {
 		for(TransactionDetail d : set) {
 			d.setTransaction(t);
 			totalAll = totalAll.longValue() + (d.getAmount() * d.getItem().getPrice());
-			transactionDetailRepository.save(d);
+			trxDetailRepository.save(d);
 		}
 		t.setTotalPrice(totalAll);
 		t = transactionRepository.save(t);

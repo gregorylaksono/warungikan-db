@@ -20,4 +20,5 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long>{
 	@Query("SELECT t FROM Transaction t WHERE t.agent = :agent")
 	List<Transaction> findTransactionAgent(@Param("agent") User user);
 
+
 }

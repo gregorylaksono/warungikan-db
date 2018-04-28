@@ -39,8 +39,8 @@ public class TransactionDetail extends Basic implements Serializable{
 	@Column(name = "amount")
 	private Integer amount;
 	
-	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="transaction")
+	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@JoinColumn(name="transaction", columnDefinition="integer")
 	private Transaction transaction;
 
 	public Long getOid() {

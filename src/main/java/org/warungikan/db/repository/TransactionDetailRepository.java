@@ -11,6 +11,10 @@ import org.warungikan.db.model.TransactionDetail;
 
 @Repository
 public interface TransactionDetailRepository extends JpaRepository<TransactionDetail, Long> {
+	
 	@Query("SELECT t FROM TransactionDetail t WHERE t.transaction = :trx")
 	List<TransactionDetail> findTransactionDetailByTransactionId(@Param("trx") Transaction t);
+
+	@Query("SELECT t FROM TransactionDetail t WHERE t.oid in (:ids)")
+	List<TransactionDetail> findTransactionDetailByDetailsId(@Param("ids") Long[] ids);
 }

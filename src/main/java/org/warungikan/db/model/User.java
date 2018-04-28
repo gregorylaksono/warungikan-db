@@ -189,7 +189,13 @@ public class User extends Basic implements Serializable{
 		}
 		return this;
 	}
-	
+	public User addAllRole(List<Role> r){
+		if(getRoles() == null){
+			roles = new ArrayList<>();
+			roles.addAll(r);
+		}
+		return this;
+	}
 	@Override
 	public boolean equals(Object obj) {
 		if(obj instanceof User){

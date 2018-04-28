@@ -15,7 +15,13 @@ public interface TransactionStateRepository extends JpaRepository<TransactionSta
 
 	@Query("SELECT t FROM TransactionState t WHERE t.transaction = :transaction")
 	List<TransactionState> findTransactionStateByTransaction(@Param("transaction") Transaction t);
+
+	@Query("SELECT DISTINCT t FROM TransactionState t WHERE t.transaction = :transaction ORDER BY date(creationDate) ASC")
+	TransactionState findLatestStateByTransaction(@Param("transaction") Transaction t);
 	
-//	@Query("SELECT t FROM TransactionDetail t WHERE t.transaction = :trx")
-//	List<TransactionDetail> findTransactionDetailByTransactionId(@Param("trx") Transaction t);
+	@Query("SELECT t FROM TransactionDetail t WHERE t.transaction = :trx")
+	List<TransactionDetail> findTransactionDetailByTransactionId(@Param("trx") Transaction t);
+
+	@Query("SELECT t FROM TransactionState t  WHERE t.transaction = :transaction AND t.state = :state")
+	TransactionState findTransactionState(@Param("transaction") Transaction t, @Param("state") Short state);
 }
