@@ -15,9 +15,10 @@ public interface RoleRepository extends JpaRepository<Role, Long>{
 	@Query("SELECT r FROM Role r WHERE r.name = :name ")
 	public Role findByName(@Param("name") String name);
 	
-	@Query("SELECT r FROM Role r WHERE r.users = :users")
-	public List<Role> findRoleByUser(@Param("users") User u);
+	@Query("SELECT u.roles FROM User u WHERE u.email = :user")
+	public List<Role> findRoleByUser(@Param("user") String u);
 
 	@Query("SELECT r FROM Role r WHERE r.name in (:roles)")
 	public List<Role> findRolesByArrayName(@Param("roles") List<String> roles);
+
 }

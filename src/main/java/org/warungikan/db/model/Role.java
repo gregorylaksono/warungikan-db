@@ -69,6 +69,13 @@ public class Role {
 			else{
 				return false;
 			}
+		}else if(obj instanceof String){
+			String name = (String) obj;
+			if(this.getName().equals(name)){
+				return true;
+			}else{
+				return false;
+			}
 		}else{
 			return super.equals(obj);
 		}
