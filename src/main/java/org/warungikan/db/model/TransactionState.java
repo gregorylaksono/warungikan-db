@@ -14,6 +14,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 @Entity
 @Table(name="transaction_state")
 public class TransactionState extends Basic implements Serializable{
@@ -51,6 +54,7 @@ public class TransactionState extends Basic implements Serializable{
 	@Column(name="name", length= 15)
 	private String name;
 	
+	@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "oid")
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="transaction")
 	private Transaction transaction;

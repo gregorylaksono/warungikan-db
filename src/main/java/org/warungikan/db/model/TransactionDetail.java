@@ -18,6 +18,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @Entity
 @Table(name="transaction_detail")
 public class TransactionDetail extends Basic implements Serializable{
@@ -39,6 +42,7 @@ public class TransactionDetail extends Basic implements Serializable{
 	@Column(name = "amount")
 	private Integer amount;
 	
+	@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "oid")
 	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name="transaction", columnDefinition="integer")
 	private Transaction transaction;
