@@ -14,4 +14,5 @@ public interface ShopItemRepository extends JpaRepository<ShopItem, Long> {
 	@Query("SELECT s FROM ShopItemStock s WHERE s.agent = :agent")
 	List<ShopItemStock> findStockByAgent(@Param("agent") User agent);
 
+	
 }

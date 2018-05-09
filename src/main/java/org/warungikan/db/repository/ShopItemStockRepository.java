@@ -16,4 +16,9 @@ public interface ShopItemStockRepository extends JpaRepository<ShopItemStock, Lo
 
 //	@Query("SELECT s FROM ShopItemStock s WHERE s.item = :item AND s.agent = :agent ")
 	ShopItemStock findStockItemByAgentAndItem(User agent,ShopItem shopItem);
+
+	@Query("SELECT s FROM ShopItemStock s WHERE s.item = :item AND s.agent = :agent AND s.amount >= :amount")
+	ShopItemStock findStockItemByAgentAndItemAndCount(@Param("agent") User u, 
+													  @Param("item") ShopItem shopItem, 
+													  @Param("amount") Integer amount);
 }

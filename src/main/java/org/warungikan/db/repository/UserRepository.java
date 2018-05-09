@@ -29,4 +29,9 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
 	@Query("SELECT c FROM User c WHERE c.enable = true")
 	public List<User> findAllUsersEnabled();
+
+	@Query("SELECT s.agent FROM ShopItemStock s JOIN s.agent u WHERE "
+			+ "s.item.id in (:items) GROUP BY s.agent.id, u.id HAVING count(s.id) >= :size")
+	public List<User> findAgentByShopItem(@Param("items") List<Long> items, @Param("size") long size);
+
 }
