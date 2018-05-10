@@ -66,6 +66,9 @@ public class User extends Basic implements Serializable{
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name="last_login")
     private Date lastLogin;
+    
+    @Column(name="random_confirmation_key", length=100, nullable=true)
+    private String randomConfirmationKey;
 	
 	@ManyToMany
     @JoinTable( 
@@ -211,6 +214,12 @@ public class User extends Basic implements Serializable{
 		setCity(city).setLatitude(Double.parseDouble(latitude)).
 		setLongitude(Double.parseDouble(longitude)).setPassword(password);
 		return t;
+	}
+	public String getRandomConfirmationKey() {
+		return randomConfirmationKey;
+	}
+	public void setRandomConfirmationKey(String randomConfirmationKey) {
+		this.randomConfirmationKey = randomConfirmationKey;
 	}
 	
 	

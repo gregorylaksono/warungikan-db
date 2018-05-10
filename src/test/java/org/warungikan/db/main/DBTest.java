@@ -147,7 +147,7 @@ public class DBTest {
 		
 		transactionRepository.save(t);
 		for(TransactionDetail d : set) {
-			d.setTransaction(t);
+//			d.setTransaction(t);
 			totalAll = totalAll.longValue() + (d.getAmount() * d.getItem().getPrice());
 			trxDetailRepository.save(d);
 		}

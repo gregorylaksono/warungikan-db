@@ -25,6 +25,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @Entity
 @Table(name="transaction")
 public class Transaction extends Basic implements Serializable{
@@ -54,8 +57,9 @@ public class Transaction extends Basic implements Serializable{
 	@Column(name="transport_price", nullable=false)
 	public Long transportPrice;
 	
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="transaction")
-    public Set<TransactionDetail> transactionDetails; 
+	
+//	@OneToMany(cascade=CascadeType.ALL, mappedBy="transaction")
+//    public Set<TransactionDetail> transactionDetails; 
 	
 	@Temporal(TemporalType.TIMESTAMP)
     @Column(name="settlement_date", nullable=true)
@@ -98,23 +102,23 @@ public class Transaction extends Basic implements Serializable{
 		return this;
 	}
 
-	public Set<TransactionDetail> getTransactionDetails() {
-		return transactionDetails;
-	}
-
-	public Transaction setTransactionDetails(Set<TransactionDetail> transactionDetails) {
-		this.transactionDetails = transactionDetails;
-		return this;
-	}
-	
-	public Transaction addTransactionDetail(TransactionDetail d) {
-		if(transactionDetails == null) transactionDetails =new HashSet<TransactionDetail>();
-		if(d != null) {
-			transactionDetails.add(d);			
-		}
-
-		return this;
-	}
+//	public Set<TransactionDetail> getTransactionDetails() {
+//		return transactionDetails;
+//	}
+//
+//	public Transaction setTransactionDetails(Set<TransactionDetail> transactionDetails) {
+//		this.transactionDetails = transactionDetails;
+//		return this;
+//	}
+//	
+//	public Transaction addTransactionDetail(TransactionDetail d) {
+//		if(transactionDetails == null) transactionDetails =new HashSet<TransactionDetail>();
+//		if(d != null) {
+//			transactionDetails.add(d);			
+//		}
+//
+//		return this;
+//	}
 
 	public Date getSettlementDate() {
 		return settlementDate;

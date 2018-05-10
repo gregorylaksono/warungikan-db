@@ -34,4 +34,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 			+ "s.item.id in (:items) GROUP BY s.agent.id, u.id HAVING count(s.id) >= :size")
 	public List<User> findAgentByShopItem(@Param("items") List<Long> items, @Param("size") long size);
 
+	@Query("SELECT c FROM User c WHERE c.randomConfirmationKey = :random")
+	public User findUserByConfirmationKey(@Param("random") String random);
+
 }
