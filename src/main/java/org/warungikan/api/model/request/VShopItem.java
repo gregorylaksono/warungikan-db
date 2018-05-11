@@ -59,6 +59,7 @@ public class VShopItem implements Serializable{
 	public void setShopId(String shopId) {
 		this.shopId = shopId;
 	}
+
 	
 	
 
