@@ -40,6 +40,9 @@ public class ShopItem extends Basic implements Serializable{
 	
 	@Column(name = "price", nullable=false)
 	private Long price;
+	
+	@Column(name = "is_enable", nullable=false)
+	private Boolean isEnable;
 
 	public Long getId() {
 		return id;
@@ -92,6 +95,14 @@ public class ShopItem extends Basic implements Serializable{
 
 	public void setWeight(String weight) {
 		this.weight = weight;
+	}
+
+	public Boolean getIsEnable() {
+		return isEnable;
+	}
+
+	public void setIsEnable(Boolean isEnable) {
+		this.isEnable = isEnable;
 	}
 	
 	

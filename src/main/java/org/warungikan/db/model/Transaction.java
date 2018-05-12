@@ -42,6 +42,9 @@ public class Transaction extends Basic implements Serializable{
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "oid", columnDefinition = "serial")
 	private Long oid;
+	
+	@Column(name="transaction_id", length=15, nullable=false, unique=true)
+	private String transactionId;
 
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "customer")
@@ -135,6 +138,15 @@ public class Transaction extends Basic implements Serializable{
 
 	public Transaction setTransportPrice(Long transportPrice) {
 		this.transportPrice = transportPrice;
+		return this;
+	}
+
+	public String getTransactionId() {
+		return transactionId;
+	}
+
+	public Transaction setTransactionId(String transactionId) {
+		this.transactionId = transactionId;
 		return this;
 	}
 

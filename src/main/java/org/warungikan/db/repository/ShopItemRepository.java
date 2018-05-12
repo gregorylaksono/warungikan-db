@@ -11,8 +11,11 @@ import org.warungikan.db.model.User;
 
 public interface ShopItemRepository extends JpaRepository<ShopItem, Long> {
 
-	@Query("SELECT s FROM ShopItemStock s WHERE s.agent = :agent")
+	@Query("SELECT s FROM ShopItemStock s JOIN ShopItem i ON s.item.id=i.id WHERE s.agent = :agent AND s.item.isEnable = true")
 	List<ShopItemStock> findStockByAgent(@Param("agent") User agent);
+
+	@Query("SELECT s FROM ShopItem s WHERE s.isEnable = true")
+	List<ShopItem> findAllShopItems();
 
 	
 }
