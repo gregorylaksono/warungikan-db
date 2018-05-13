@@ -33,7 +33,7 @@ public class ShopItem extends Basic implements Serializable{
 	private String description;
 	
 	@Column(name = "weight", length=15)
-	private String weight;
+	private Integer weight;
 	
 	@Column(name = "url", length=50, nullable=false)
 	private String url;
@@ -89,11 +89,11 @@ public class ShopItem extends Basic implements Serializable{
 		return name;
 	}
 
-	public String getWeight() {
+	public Integer getWeight() {
 		return weight;
 	}
 
-	public void setWeight(String weight) {
+	public void setWeight(Integer weight) {
 		this.weight = weight;
 	}
 

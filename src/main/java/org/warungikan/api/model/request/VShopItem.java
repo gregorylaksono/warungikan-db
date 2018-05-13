@@ -3,7 +3,7 @@ package org.warungikan.api.model.request;
 import java.io.Serializable;
 
 public class VShopItem implements Serializable{
-	
+
 	/**
 	 * 
 	 */
@@ -13,22 +13,25 @@ public class VShopItem implements Serializable{
 	private String url;
 	private String price;
 	private String shopId;
-	
+	private String weight;
+
 	public VShopItem(){}
-	
-	public VShopItem(String name, String description, String url, String price) {
+
+	public VShopItem(String name, String description, String url, String price, String weight) {
 		setName(name);
 		setDescription(description);
 		setUrl(url);
 		setPrice(price);
+		setWeight(weight);
 	}
-	public VShopItem(String shopId, String name, String description, String url, String price) {
+	public VShopItem(String shopId, String name, String description, String url, String price, String weight) {
 		setName(name);
 		setDescription(description);
 		setUrl(url);
 		setPrice(price);
 		setShopId(shopId);
-		}
+		setWeight(weight);
+	}
 	public String getName() {
 		return name;
 	}
@@ -60,7 +63,15 @@ public class VShopItem implements Serializable{
 		this.shopId = shopId;
 	}
 
-	
-	
+	public String getWeight() {
+		return weight;
+	}
+
+	public void setWeight(String weight) {
+		this.weight = weight;
+	}
+
+
+
 
 }
