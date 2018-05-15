@@ -40,6 +40,18 @@ public class TransactionState extends Basic implements Serializable{
 		public Short getState() {
 			return state;
 		}
+		
+		public static String getStateName(Short code) {
+			switch (code) {
+			case 1: return SENT.name();
+			case 2: return PAID.name();
+			case 3: return PROCESSING.name();
+			case 4: return DELIVERING.name();
+			case 5: return RECEIVED.name();
+			case 6: return CANCELED.name();
+			default: return "";
+			}
+		}
 
 	}
 

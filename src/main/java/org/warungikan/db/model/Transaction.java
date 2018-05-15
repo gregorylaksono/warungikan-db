@@ -68,6 +68,7 @@ public class Transaction extends Basic implements Serializable{
     @Column(name="settlement_date", nullable=true)
 	private Date settlementDate;
 	
+	private String status;
 	
 	public Long getOid() {
 		return oid;
@@ -148,6 +149,14 @@ public class Transaction extends Basic implements Serializable{
 	public Transaction setTransactionId(String transactionId) {
 		this.transactionId = transactionId;
 		return this;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 
