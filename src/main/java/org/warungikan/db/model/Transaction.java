@@ -23,6 +23,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -68,6 +69,7 @@ public class Transaction extends Basic implements Serializable{
     @Column(name="settlement_date", nullable=true)
 	private Date settlementDate;
 	
+	@Transient
 	private String status;
 	
 	public Long getOid() {
