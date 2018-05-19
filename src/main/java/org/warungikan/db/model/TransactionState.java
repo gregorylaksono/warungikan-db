@@ -52,6 +52,18 @@ public class TransactionState extends Basic implements Serializable{
 			default: return "";
 			}
 		}
+		
+		public static Short getStateCode(String name){
+			switch(name){
+			case "SENT":  return SENT.getState();
+			case "PAID" : return PAID.getState() ;
+			case "PROCESSING" : return PROCESSING.getState() ;
+			case "DELIVERING" : return DELIVERING.getState() ;
+			case "RECEIVED" : return RECEIVED.getState() ;
+			case "CANCELED" : return CANCELED.getState() ;
+			default: return null;
+			}
+		}
 
 	}
 

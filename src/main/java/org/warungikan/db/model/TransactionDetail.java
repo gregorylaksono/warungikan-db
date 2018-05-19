@@ -46,6 +46,9 @@ public class TransactionDetail extends Basic implements Serializable{
 	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name="transaction", columnDefinition="integer")
 	private Transaction transaction;
+	
+	@Column(name="is_canceled")
+	private Boolean isCanceled;
 
 	public Long getOid() {
 		return oid;
@@ -77,6 +80,14 @@ public class TransactionDetail extends Basic implements Serializable{
 
 	public void setTransaction(Transaction transaction) {
 		this.transaction = transaction;
+	}
+
+	public Boolean getIsCanceled() {
+		return isCanceled;
+	}
+
+	public void setIsCanceled(Boolean isCanceled) {
+		this.isCanceled = isCanceled;
 	}
 	
 	

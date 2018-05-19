@@ -61,6 +61,9 @@ public class Transaction extends Basic implements Serializable{
 	@Column(name="transport_price", nullable=false)
 	public Long transportPrice;
 	
+	@Column(name="distance")
+	public Long distance;
+	
 	
 //	@OneToMany(cascade=CascadeType.ALL, mappedBy="transaction")
 //    public Set<TransactionDetail> transactionDetails; 
@@ -159,6 +162,15 @@ public class Transaction extends Basic implements Serializable{
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public Long getDistance() {
+		return distance;
+	}
+
+	public Transaction setDistance(Long distance) {
+		this.distance = distance;
+		return this;
 	}
 
 

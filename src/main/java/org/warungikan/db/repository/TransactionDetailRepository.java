@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.warungikan.db.model.Transaction;
 import org.warungikan.db.model.TransactionDetail;
+import org.warungikan.db.model.User;
 
 @Repository
 public interface TransactionDetailRepository extends JpaRepository<TransactionDetail, Long> {
@@ -17,4 +18,7 @@ public interface TransactionDetailRepository extends JpaRepository<TransactionDe
 
 	@Query("SELECT t FROM TransactionDetail t WHERE t.oid in (:ids)")
 	List<TransactionDetail> findTransactionDetailByDetailsId(@Param("ids") Long[] ids);
+
+//	@Query("SELECT t FROM TransactionDetail t JOIN t.transaction r WHERE r.agent = :agent AND r.item ")
+//	List<TransactionDetail> findTransactionDetailByAgent(@Param("agent") User agent);
 }
