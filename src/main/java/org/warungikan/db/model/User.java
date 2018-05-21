@@ -211,8 +211,11 @@ public class User extends Basic implements Serializable{
 			String longitude , String password){
 		User t = new User();
 		t.setName(name).setEmail(email).setTelpNo(telNo).setAddress(address).
-		setCity(city).setLatitude(Double.parseDouble(latitude)).
-		setLongitude(Double.parseDouble(longitude)).setPassword(password);
+		setCity(city);
+		
+		if(latitude !=null) t.setLatitude(Double.parseDouble(latitude));
+		if(longitude != null) t.setLongitude(Double.parseDouble(longitude));
+		if(password != null) t.setPassword(password);
 		return t;
 	}
 	public String getRandomConfirmationKey() {
