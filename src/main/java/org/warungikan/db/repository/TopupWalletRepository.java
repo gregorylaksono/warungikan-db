@@ -14,7 +14,7 @@ import org.warungikan.db.model.User;
 public interface TopupWalletRepository extends JpaRepository<TopupWalletHistory, Long> {
 
 	
-	@Query("SELECT t FROM TopupWalletHistory t where t.user=:user")
+	@Query("SELECT t FROM TopupWalletHistory t where t.user=:user AND t.release=true")
 	public List<TopupWalletHistory> findTopupsWalletByUser(@Param("user") User user);
 
 	@Query("SELECT t FROM TopupWalletHistory t where t.top_up_id = :topupId")

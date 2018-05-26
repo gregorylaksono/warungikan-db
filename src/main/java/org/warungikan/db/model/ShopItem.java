@@ -1,6 +1,7 @@
 package org.warungikan.db.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -106,6 +107,16 @@ public class ShopItem extends Basic implements Serializable{
 	}
 	
 	
-	
+	public static ShopItem createNew(String name, String url, Long price, String weight, String description, Boolean isEnable){
+		ShopItem i = new ShopItem();
+		i.setName(name);
+		i.setUrl(url);
+		i.setWeight(weight);
+		i.setPrice(price);
+		i.setIsEnable(isEnable);
+		i.setCreationDate(new Date());
+		return i;
+		
+	}
 
 }

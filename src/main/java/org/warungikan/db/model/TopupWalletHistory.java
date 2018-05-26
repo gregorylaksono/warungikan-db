@@ -46,6 +46,9 @@ public class TopupWalletHistory extends Basic implements Serializable{
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="topup_date")
 	protected Date topupDate;
+	
+	@Column(name="release")
+	private Boolean release;
 
 	public Long getOid() {
 		return oid;
@@ -101,6 +104,14 @@ public class TopupWalletHistory extends Basic implements Serializable{
 
 	public void setTopupDate(Date topupDate) {
 		this.topupDate = topupDate;
+	}
+
+	public Boolean getRelease() {
+		return release;
+	}
+
+	public void setRelease(Boolean release) {
+		this.release = release;
 	}
 	
 	
