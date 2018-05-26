@@ -27,7 +27,7 @@ public class ShopItem extends Basic implements Serializable{
 	@Column(name = "oid", columnDefinition = "serial")
 	private Long id;
 	
-	@Column(name = "name", length=15, nullable=false)
+	@Column(name = "name", length=40, nullable=false)
 	private String name;
 	
 	@Column(name = "description", length=200)
